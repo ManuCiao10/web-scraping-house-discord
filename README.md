@@ -1,7 +1,8 @@
 # web-scraping-house-discord
 
 ## Features Discord
-<img width="527" alt="Screenshot 2022-08-03 at 19 03 59" src="https://user-images.githubusercontent.com/89024276/183727521-121c5f0e-edb0-4d17-bbb6-fa321d46538e.png">
+<img width="440" alt="Screenshot 2022-08-09 at 15 58 38" src="https://user-images.githubusercontent.com/89024276/183749691-f8f5b713-6cf8-4f03-bc7d-52753149fec8.png">
+
 
 ## Contributing 
 To contribute follow these steps:
