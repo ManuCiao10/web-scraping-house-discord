@@ -12,7 +12,7 @@ content.
 The script makes it easy for customers to find a cheap and fast home. Getting a message every time a house is posted. 
 Actually the script support only Discord. Will be implementate very soon a version even for Whatsapp.
 
-Per House it scrapes the following information:
+#### Per House it scrapes the following information:
  + Location
  + url
  + text
