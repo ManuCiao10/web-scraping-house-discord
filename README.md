@@ -1,4 +1,4 @@
-# web-scraping-house-discord
+# Web-Scraping-House-Discord
 
 Synopsis
 ========
