@@ -21,6 +21,13 @@ Per House it scrapes the following information:
  + n.people
  + price
 
+It scrapes the following websites:
+ + Roomlala
+ + Kijiji
+ + Oklouer
+ + Facebook
+ + Airbnb
+
 ## Features Discord
 `Oklouer`
 
