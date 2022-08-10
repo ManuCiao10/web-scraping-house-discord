@@ -72,4 +72,3 @@ def send_webhook(data):
 if __name__ == "__main__":
     Roomlala()
 
-#https://discord.com/api/webhooks/1006626270676795413/Q1rEwEeCNW57PXvAb9oeobsX8QxzMT8tMmPk9k3JR0FUxyWffeuW2lQNRei7ibI0FLiV
