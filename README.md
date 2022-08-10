@@ -7,8 +7,7 @@ A simple python script to scrape House datas using the Python package ``requests
 to retrieve the content and ``Beautifulsoup4`` to parse the retrieved
 content.
 
-1. Motivation
-=============
+## Motivation
 
 The script makes it easy for customers to find a cheap and fast home. Getting a message every time a house is posted. 
 Actually the script support only Discord. Will be implementate very soon a version even for Whatsapp.
