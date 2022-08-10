@@ -21,7 +21,7 @@ Per House it scrapes the following information:
  + n.people
  + price
 
-It scrapes the following websites:
+### websites:
  + Roomlala
  + Kijiji
  + Oklouer
