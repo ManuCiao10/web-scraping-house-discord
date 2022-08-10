@@ -47,7 +47,7 @@ class HouseScraper:
 
 def send_webhook(data):
     webhook = DiscordWebhook(
-        url="https://discord.com/api/webhooks/1005139782185271336/L-Alip2M_vTvS7rHTP4_yanIw4pRGovdo-tPQu0c5hg30mrfdDMPIJe1BjtEARJ38Ann" 
+        url="YOUR WEBHOOK" 
     ) 
     embed = DiscordEmbed(title=data[1], color="127378", url=f"https://www.oklouer.com/{data[0]}")
     embed.set_thumbnail(url=f"https://www.oklouer.com/{data[2]}")         
