@@ -1,7 +1,6 @@
 # Web-Scraping-House-Discord
 
-Synopsis
-========
+## Synopsis
 
 A simple python script to scrape House datas using the Python package ``requests``
 to retrieve the content and ``Beautifulsoup4`` to parse the retrieved
