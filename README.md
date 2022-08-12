@@ -32,6 +32,11 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 <img width="440" alt="Screenshot 2022-08-09 at 15 58 38" src="https://user-images.githubusercontent.com/89024276/183749691-f8f5b713-6cf8-4f03-bc7d-52753149fec8.png">
 
+## ADD
+-Fixing new websites
+-add Porxies
+-add payment check discord
+-convert code in software
 
 ## Contributing 
 To contribute follow these steps:
