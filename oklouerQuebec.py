@@ -55,11 +55,18 @@ class HouseScraper:
 
 def send_webhook(data):
     webhook = DiscordWebhook(
+<<<<<<< HEAD
         url=OKLOUERWEBHOOK
     )
     embed = DiscordEmbed(
         title=data[1], color=COLORDS, url=f"https://www.oklouer.com/{data[0]}")
     embed.set_thumbnail(url=f"https://www.oklouer.com/{data[2]}")
+=======
+        url="YOUR WEBHOOK" 
+    ) 
+    embed = DiscordEmbed(title=data[1], color="127378", url=f"https://www.oklouer.com/{data[0]}")
+    embed.set_thumbnail(url=f"https://www.oklouer.com/{data[2]}")         
+>>>>>>> bf022f41b4ba4b26034335ff81001ba06c1acaa8
     embed.add_embed_field(
         name="• Contact",
         value=data[5],
@@ -88,5 +95,8 @@ if __name__ == "__main__":
 
 """
 -Add Rooms + bed and remove maps
+<<<<<<< HEAD
 
+=======
+>>>>>>> bf022f41b4ba4b26034335ff81001ba06c1acaa8
 """

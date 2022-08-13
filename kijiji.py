@@ -45,7 +45,11 @@ class kijiji:
      
 def send_webhook(data):
     webhook = DiscordWebhook(
+<<<<<<< HEAD
         url=KIJIJIWEBHOOK
+=======
+        url="PUT YOUR WEBHOOK" 
+>>>>>>> bf022f41b4ba4b26034335ff81001ba06c1acaa8
     ) 
     embed = DiscordEmbed(title=data[1], color=COLORDS, url=f"https://www.kijiji.ca{data[0]}")
     embed.set_thumbnail(url=data[2])         
@@ -76,6 +80,10 @@ if __name__ == "__main__":
 -Add only new houses TOOLS and it must run 24/7 and NOT stop
 -Add maybe some more DATA?
 -Compact everything in 1 FILE(the same sintax ofc)
+<<<<<<< HEAD
 -Implemantation with Fast API
 -ADD CONSTANT
 """
+=======
+"""
+>>>>>>> bf022f41b4ba4b26034335ff81001ba06c1acaa8

@@ -53,11 +53,18 @@ class Roomlala:
 
 def send_webhook(data):
     webhook = DiscordWebhook(
+<<<<<<< HEAD
         url=ROOMLALAWEBHOOK
     )
     embed = DiscordEmbed(
         title=data[1], color=COLORDS, url=f"https://en-ca.roomlala.com{data[0]}")
     embed.set_thumbnail(url=data[2])
+=======
+        url="YOUR WEBHOOK" 
+    ) 
+    embed = DiscordEmbed(title=data[1], color="127378", url=f"https://en-ca.roomlala.com{data[0]}")
+    embed.set_thumbnail(url=data[2])         
+>>>>>>> bf022f41b4ba4b26034335ff81001ba06c1acaa8
     embed.add_embed_field(
         name="• Price/month",
         value=f"{data[4]}$",
@@ -81,9 +88,12 @@ def send_webhook(data):
 if __name__ == "__main__":
     Roomlala()
 
+<<<<<<< HEAD
 """
 IMPOVEMENT
 -Add proxies
 -Unificare Codice e migliorare
 -add main
 """
+=======
+>>>>>>> bf022f41b4ba4b26034335ff81001ba06c1acaa8
