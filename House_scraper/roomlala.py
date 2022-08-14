@@ -4,7 +4,6 @@ import time
 from bs4 import BeautifulSoup
 from constants import *
 
-
 class Roomlala:
     def __init__(self):
         self.base_url = ROOMLALA

@@ -2,7 +2,7 @@ import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
 from bs4 import BeautifulSoup
-from constants import *
+from House_scraper.constants import *
 
 class HouseScraper:
     def __init__(self):
