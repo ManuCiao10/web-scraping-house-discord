@@ -4,7 +4,6 @@ import time
 from bs4 import BeautifulSoup
 from constants import *
 
-
 class kijiji:
     def __init__(self):
         self.base_url = KIJIJI
@@ -53,7 +52,7 @@ def send_webhook(data):
         url=KIJIJIWEBHOOK
     )
     embed = DiscordEmbed(
-        title=data[1], color=COLORDS, url=f"https://www.kijiji.ca{data[0]}")
+        title=data[1], color=COLOR_DS, url=f"https://www.kijiji.ca{data[0]}")
     embed.set_thumbnail(url=data[2])
     embed.add_embed_field(
         name="• Area",
@@ -84,4 +83,6 @@ if __name__ == "__main__":
 -Compact everything in 1 FILE(the same sintax ofc)
 -Implemantation with Fast API
 -ADD CONSTANT
+-add Interface users when he can type the price and the city 
+
 """

@@ -1,32 +1,51 @@
-from http import cookies
-import requests
-from discord_webhook import DiscordWebhook, DiscordEmbed
-import time
-from bs4 import BeautifulSoup
-import random
+from constants import *
+from requests_html import HTMLSession
+from random_user_agent.user_agent import UserAgent
+from random_user_agent.params import SoftwareName, OperatingSystem
+import logging
 
-class Logis:
-    def __init__(self):
-        user_agent_list = [
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36 OPR/88.0.4412.85'
-        ]
-        user_agent = random.choice(user_agent_list)
-        headers = {'User-Agent': user_agent, "Accept-Language": "en-US,en;q=0.5",
-                   'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"}
-        self.base_url = "https://www.facebook.com/marketplace/quebec/propertyrentals?minPrice=200&maxPrice=600&exact=false&latitude=46.8005&longitude=-71.2196&radius=6"
-        self.session = requests.Session()
-        proxy = {"http": "http://5su3v7ljqn:mjhmrl7wk2@141.11.247.180:6690"}
-        page = self.session.get(self.base_url, proxies=proxy, headers=headers)
-        print(page)
-        # ip = page.json()['origin']
-        # print("Ip:", ip)
-        soup = BeautifulSoup(page.content, 'lxml')
-        print(soup.prettify())
+logger = logging.getLogger(__name__)
+print(logger)
 
+class LogiScraper:
+    """Class for creating LogiScraper Iterators"""
 
-if __name__ == "__main__":
-    Logis()
+    base_url = LOGIS_QUEBEC
+    default_headers = {
+        'Accept-Language': 'en-US,en;q=0.5',
+        "Sec-Fetch-User": "?1",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8",
+    }
+
+    def __init__(self, proxy=""):
+        session = HTMLSession()
+        session.headers.update(self.default_headers)
+        self.session = session
+
+    def set_user_agent(self):
+        print("sii")
+        self.session.headers["User-Agent"] = self.generate_user_agent()
+
+    def generate_user_agent(self):
+        sn = [SoftwareName.CHROME.value]
+        os = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]
+        user_agent_rotator = UserAgent(
+            SoftwareName=sn, operating_systems=os, limit=100)
+        self.user_agent = user_agent_rotator.get_random_user_agent()
+
+    
+
+    def set_noscript(self, noscript):
+        if noscript:
+            self.session.cookies.set("noscript", "1")
+        else:
+            self.session.cookies.set("noscript", "0")
+
+    def set_proxy(self, proxy, verify=True):
+        self.requests_kwargs.update(
+            {'proxies': {'http': proxy, 'https': proxy}, 'verify': verify}
+        )
+        ip = self.get(
+            "http://lumtest.com/myip.json", headers={"Accept": "application/json"}
+        ).json()
+        logger.debug(f"Proxy details: {ip}")

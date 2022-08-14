@@ -55,7 +55,7 @@ def send_webhook(data):
         url=ROOMLALAWEBHOOK
     )
     embed = DiscordEmbed(
-        title=data[1], color=COLORDS, url=f"https://en-ca.roomlala.com{data[0]}")
+        title=data[1], color=COLOR_DS, url=f"https://en-ca.roomlala.com{data[0]}")
     embed.set_thumbnail(url=data[2])
     embed.add_embed_field(
         name="• Price/month",

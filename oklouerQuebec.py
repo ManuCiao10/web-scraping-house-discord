@@ -58,7 +58,7 @@ def send_webhook(data):
         url=OKLOUERWEBHOOK
     )
     embed = DiscordEmbed(
-        title=data[1], color="127378", url=f"https://www.oklouer.com/{data[0]}")
+        title=data[1], color=COLOR_DS, url=f"https://www.oklouer.com/{data[0]}")
     embed.set_thumbnail(url=f"https://www.oklouer.com/{data[2]}")
     embed.add_embed_field(
         name="• Contact",
