@@ -77,12 +77,3 @@ def send_webhook(data):
 if __name__ == "__main__":
     kijiji()
 
-"""
--Add only new houses TOOLS and it must run 24/7 and NOT stop
--Add maybe some more DATA?
--Compact everything in 1 FILE(the same sintax ofc)
--Implemantation with Fast API
--ADD CONSTANT
--add Interface users when he can type the price and the city 
--use Unitext
-"""

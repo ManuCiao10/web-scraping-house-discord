@@ -55,9 +55,17 @@ Actually the script support only Discord. Will be implementate very soon a versi
 ## ADD
 
 -Fixing new websites
--add Porxies
+-Clean Code
+-add Proxies
 -add payment check discord
 -convert code in software
+-Add only new houses TOOLS and it must run 24/7 and NOT stop
+-Add maybe some more DATA?
+-Compact everything in 1 FILE(the same sintax ofc)
+-Implemantation with Fast API
+-add Interface users when he can type the price and the city 
+-use Unitext
+-User Interface
 
 ## Contributing
 
