@@ -1,1 +1,3 @@
-user:password@host.com
+username:password@ip:port
+
+5su3v7ljqn:mjhmrl7wk2@141.11.247.82:7046
