@@ -2,7 +2,7 @@ import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
 from bs4 import BeautifulSoup
-from House_scraper.constants import *
+from constants import *
 
 class HouseScraper:
     def __init__(self):
@@ -55,7 +55,7 @@ class HouseScraper:
 
 def send_webhook(data):
     webhook = DiscordWebhook(
-        url=OKLOUERWEBHOOK
+        url=f"{PREFIX}{OKLOUERWEBHOOK}"
     )
     embed = DiscordEmbed(
         title=data[1], color=COLOR_DS, url=f"https://www.oklouer.com/{data[0]}")

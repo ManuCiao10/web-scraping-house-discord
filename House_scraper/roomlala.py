@@ -51,7 +51,7 @@ class Roomlala:
 
 def send_webhook(data):
     webhook = DiscordWebhook(
-        url=ROOMLALAWEBHOOK
+        url=f"{PREFIX}{ROOMLALAWEBHOOK}"
     )
     embed = DiscordEmbed(
         title=data[1], color=COLOR_DS, url=f"https://en-ca.roomlala.com{data[0]}")

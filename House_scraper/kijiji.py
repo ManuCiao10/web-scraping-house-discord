@@ -49,7 +49,7 @@ class kijiji:
 
 def send_webhook(data):
     webhook = DiscordWebhook(
-        url=KIJIJIWEBHOOK
+        url=f"{PREFIX}{KIJIJIWEBHOOK}"
     )
     embed = DiscordEmbed(
         title=data[1], color=COLOR_DS, url=f"https://www.kijiji.ca{data[0]}")
@@ -84,5 +84,5 @@ if __name__ == "__main__":
 -Implemantation with Fast API
 -ADD CONSTANT
 -add Interface users when he can type the price and the city 
-
+-use Unitext
 """
