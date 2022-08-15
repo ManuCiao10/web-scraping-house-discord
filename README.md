@@ -6,6 +6,23 @@ A simple python script to scrape House datas using the Python package `requests`
 to retrieve the content and `Beautifulsoup4` to parse the retrieved
 content.
 
+## Installing Scraping-House-Discord
+
+If you want to use latest version, install from source. To install twitter-scraper from source, follow these steps:
+
+Linux and macOS:
+```bash
+git clone https://github.com/ManuCiao10/web-scraping-house-discord.git
+cd House_scraper
+sudo python3 setup.py install 
+```
+
+Also, you can install with PyPI.
+
+```bash
+pip3 install ScaperMonitor
+```
+
 ## Motivation
 
 The script makes it easy for customers to find a cheap and fast home. Getting a message every time a house is posted.
