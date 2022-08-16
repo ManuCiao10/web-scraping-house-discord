@@ -67,8 +67,8 @@ def send_webhook(data):
         inline=True
     )
     embed.set_footer(
-        text="Mitra",
-        icon_url="https://i.imgur.com/8KANDeK.jpg"
+        text="Roomlala",
+        icon_url="https://cdn.discordapp.com/attachments/1006940903820251188/1009219949023211601/7_1c0332b5347c2a04b7913e2bfe85c99a.png"
     )
     embed.set_timestamp()
     webhook.add_embed(embed)
