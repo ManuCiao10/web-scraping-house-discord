@@ -122,8 +122,3 @@ def send_webhook(data):
     resp = webhook.execute()
     time.sleep(2)
 
-
-"""
--Add random User Agent
--Add send message when proxies are getting banned
-"""

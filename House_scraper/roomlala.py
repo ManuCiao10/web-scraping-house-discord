@@ -79,9 +79,3 @@ def send_webhook(data):
 if __name__ == "__main__":
     Roomlala()
 
-"""
-IMPOVEMENT
--Add proxies
--Unificare Codice e migliorare
--add main
-"""

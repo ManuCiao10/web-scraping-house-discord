@@ -11,10 +11,11 @@ content.
 If you want to use latest version, install from source. To install twitter-scraper from source, follow these steps:
 
 Linux and macOS:
+
 ```bash
 git clone https://github.com/ManuCiao10/web-scraping-house-discord.git
 cd House_scraper
-sudo python3 setup.py install 
+sudo python3 setup.py install
 ```
 
 Also, you can install with PyPI.
@@ -43,8 +44,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 - Roomlala
 - Kijiji
 - Oklouer
-- Facebook
-- Airbnb
+- Logisquebec
 
 ## Discord
 
@@ -54,18 +54,15 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 ## ADD
 
--Fixing new websites
+-Compact everything in 1 FILE(the same sintax ofc)
+-Add random User Agent
+-Add send message when proxies are getting banned
 -Clean Code
--add Proxies
 -add payment check discord
 -convert code in software
 -Add only new houses TOOLS and it must run 24/7 and NOT stop
--Add maybe some more DATA?
--Compact everything in 1 FILE(the same sintax ofc)
 -Implemantation with Fast API
--add Interface users when he can type the price and the city 
--use Unitext
--User Interface
+-add User Interface users when he can type the price and the city
 
 ## Contributing
 
