@@ -66,7 +66,7 @@ def send_webhook(data):
     )
     embed.set_footer(
         text="Kijiji",
-        icon_url="https://cdn.discordapp.com/attachments/1005139625679003748/1009219469782044722/fb_desktop.jpeg"
+        icon_url=KIJIJI_IMG
     )
     embed.set_timestamp()
     webhook.add_embed(embed)

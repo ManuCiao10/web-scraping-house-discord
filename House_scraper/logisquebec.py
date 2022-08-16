@@ -115,7 +115,7 @@ def send_webhook(data):
     )
     embed.set_footer(
         text="LogisQuebec",
-        icon_url="https://cdn.discordapp.com/attachments/1005141977488175154/1009217394130034698/download.png"
+        icon_url=LOGIS_IMG
     )
     embed.set_timestamp()
     webhook.add_embed(embed)

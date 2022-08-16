@@ -68,7 +68,7 @@ def send_webhook(data):
     )
     embed.set_footer(
         text="Roomlala",
-        icon_url="https://cdn.discordapp.com/attachments/1006940903820251188/1009219949023211601/7_1c0332b5347c2a04b7913e2bfe85c99a.png"
+        icon_url=ROOMLALA_IMG
     )
     embed.set_timestamp()
     webhook.add_embed(embed)

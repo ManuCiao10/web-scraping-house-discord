@@ -65,9 +65,6 @@ def send_webhook(data):
         value=data[5],
         inline=True
     )
-    # embed.set_author(
-    #     name="• Location"
-    # )
     embed.add_embed_field(
         name="• Price/month",
         value=data[4],
@@ -75,7 +72,7 @@ def send_webhook(data):
     )
     embed.set_footer(
         text="Oklouer",
-        icon_url="https://cdn.discordapp.com/attachments/1005138033298903066/1009218861012369418/Screenshot_2022-08-16_at_17.55.17.png"
+        icon_url=OKLOUER_IMG
     )
     embed.set_timestamp()
     webhook.add_embed(embed)
