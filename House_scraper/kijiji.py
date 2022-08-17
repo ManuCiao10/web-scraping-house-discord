@@ -13,38 +13,39 @@ class kijiji:
         soup = BeautifulSoup(page.content, 'lxml')
         house_list = []
         address_list = []
-        for loop in soup.find_all('div', class_="clearfix"):
-            try:
-                address = loop.find(
-                    'a', class_="title").text.rstrip().lstrip().capitalize()
-            except AttributeError:
-                continue
-            if address not in address_list:
+        while True:
+            for loop in soup.find_all('div', class_="clearfix"):
                 try:
-                    url = loop.find('a', class_="title").get('href')
+                    address = loop.find(
+                        'a', class_="title").text.rstrip().lstrip().capitalize()
                 except AttributeError:
                     continue
-                try:
-                    price = loop.find('div', class_="price").text.split(",")[0]
-                except AttributeError:
-                    continue
-                try:
-                    local = loop.find('div', class_="location").find(
-                        'span').text.rstrip().lstrip()
-                except AttributeError:
-                    continue
-                try:
-                    img = loop.find('div', class_="image").find(
-                        'img').get('data-src')
-                except AttributeError:
-                    continue
-                if(img == None):
-                    continue
-                else:
-                    data = [url, address, img, price, local]
-                house_list.append(data)
-                address_list.append(address)
-                send_webhook(data)
+                if address not in address_list:
+                    try:
+                        url = loop.find('a', class_="title").get('href')
+                    except AttributeError:
+                        continue
+                    try:
+                        price = loop.find('div', class_="price").text.split(",")[0]
+                    except AttributeError:
+                        continue
+                    try:
+                        local = loop.find('div', class_="location").find(
+                            'span').text.rstrip().lstrip()
+                    except AttributeError:
+                        continue
+                    try:
+                        img = loop.find('div', class_="image").find(
+                            'img').get('data-src')
+                    except AttributeError:
+                        continue
+                    if(img == None):
+                        continue
+                    else:
+                        data = [url, address, img, price, local]
+                    house_list.append(data)
+                    address_list.append(address)
+                    send_webhook(data)
 
 
 def send_webhook(data):

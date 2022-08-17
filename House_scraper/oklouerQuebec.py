@@ -2,9 +2,9 @@ import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
 from bs4 import BeautifulSoup
-from constants import *
+from .constants import *
 
-class HouseScraper:
+class Oklouer:
     def __init__(self):
         self.base_url = OKLOUER
         self.session = requests.Session()
@@ -78,12 +78,3 @@ def send_webhook(data):
     webhook.add_embed(embed)
     resp = webhook.execute()
     time.sleep(2)
-
-
-if __name__ == "__main__":
-    HouseScraper()
-
-"""
--Add Rooms + bed and remove maps
-
-"""

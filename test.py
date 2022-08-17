@@ -2,17 +2,23 @@ from typing import Any
 import House_scraper
 import time
 
-session = House_scraper.LogiScraper()
+from House_scraper import logisquebec 
 
-def testCase(session):
+logisquebec = House_scraper.LogiScraper()
+
+def testCase(logisquebec):
     start = time.time()
-    session.set_user_agent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8")
-    session.set_noscript(Any)
-    session.set_proxy("5su3v7ljqn:mjhmrl7wk2@141.11.247.82:7046")
-    session.createPayload()
-    session.scrape_data()
+    logisquebec.set_user_agent(
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8")
+    logisquebec.set_noscript(Any)
+    logisquebec.set_proxy("5su3v7ljqn:mjhmrl7wk2@141.11.247.82:7046")
+    logisquebec.createPayload()
+    logisquebec.scrape_data()
     end = time.time()
     print("Time taken: ", end - start)
 
-print("Testing session creation speed with requests")
-testCase(session)
+print("=======HOUSE_SCRAPER=======")
+testCase(logisquebec)
+House_scraper.Oklouer()
+
+

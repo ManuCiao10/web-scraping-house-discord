@@ -13,7 +13,6 @@ logging.basicConfig(level=logging.DEBUG)
 logger.debug(f"Proxy details: {ip['ip']}\n")
 """
 
-
 class LogiScraper:
     """Class for creating LogiScraper Iterators"""
 
@@ -105,7 +104,7 @@ def send_webhook(data):
     )
     embed.add_embed_field(
         name="• Price/month",
-        value=f"{data[3]}$",
+        value=f"{data[3]}",
         inline=True
     )
     embed.add_embed_field(
