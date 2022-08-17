@@ -1,11 +1,15 @@
+from mimetypes import init
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
 from bs4 import BeautifulSoup
-from constants import *
+from .constants import *
+import datetime
 
 class kijiji:
-    def __init__(self):
+    def __init__(self) -> None:
+        pass
+    def session(self):
         self.base_url = KIJIJI
         self.session = requests.Session()
         page = self.session.get(
@@ -16,8 +20,11 @@ class kijiji:
         while True:
             for loop in soup.find_all('div', class_="clearfix"):
                 try:
+                    currentDT = datetime.datetime.now()
+                    print(str(currentDT))
                     address = loop.find(
                         'a', class_="title").text.rstrip().lstrip().capitalize()
+                    print(address)
                 except AttributeError:
                     continue
                 if address not in address_list:
@@ -46,7 +53,9 @@ class kijiji:
                     house_list.append(data)
                     address_list.append(address)
                     send_webhook(data)
-
+                else:
+                    print("New House ?")
+                    kijiji.init()
 
 def send_webhook(data):
     webhook = DiscordWebhook(
@@ -73,6 +82,7 @@ def send_webhook(data):
     webhook.add_embed(embed)
     resp = webhook.execute()
     time.sleep(2)
+
 
 
 if __name__ == "__main__":

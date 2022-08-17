@@ -54,10 +54,13 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 ## ADD
 
--Compact everything in 1 FILE(the same sintax ofc)
+-See how to interact with Functions
+-change syntax for check the new how calling the initial function
+
+-Test Code for 24h
+-Compact same sintax 
 -Add random User Agent
 -Add send message when proxies are getting banned
--Clean Code
 -add payment check discord
 -convert code in software
 -Add only new houses TOOLS and it must run 24/7 and NOT stop
