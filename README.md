@@ -56,23 +56,23 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1.1 Add kijiji first houses published newest
-1.2 Add PID to compared insted of the address name
-1.3 Add SQL database
-1.4 Check API Kijiji
-1.5 Read The pages documentation API kijiji
-
-1.  See how to interact with Functions
-2.  change syntax for check the new how calling the initial function
-3.  Test Code for 24h
-4.  Compact same sintax
-5.  Add random User Agent
-6.  Add send message when proxies are getting banned
-7.  add payment check discord
-8.  convert code in software
-9.  Add only new houses TOOLS and it must run 24/7 and NOT stop
-10. Implemantation with Fast API
-11. add User Interface users when he can type the price and the city
+1. Add kijiji first houses published newest
+2. Add PID to compared insted of the address name
+3. Add SQL database
+4. Check API Kijiji
+5. Read The pages documentation API kijiji
+6. UI like Tinder house
+7. See how to interact with Functions
+8. change syntax for check the new how calling the initial function
+9. Test Code for 24h
+10. Compact same sintax
+11. Add random User Agent
+12. Add send message when proxies are getting banned
+13. add payment check discord
+14. convert code in software
+15. Add only new houses TOOLS and it must run 24/7 and NOT stop
+16. Implemantation with Fast API
+17. add User Interface users when he can type the price and the city
 
 ## Deployment
 
