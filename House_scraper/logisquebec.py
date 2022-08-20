@@ -56,7 +56,6 @@ class LogiScraper:
         self.soup = BeautifulSoup(response.content, 'lxml')
         self.contents = self.soup.find_all('li')
         self.address_list = []
-        #self.house_list = []
 
     def scrape_data(self):
         for content in self.contents:
@@ -86,7 +85,6 @@ class LogiScraper:
                 except AttributeError:
                     continue
                 data = [url, address, img, price, area, info]
-                # self.house_list.append(data)
                 self.address_list.append(address)
                 send_webhook(data)
 

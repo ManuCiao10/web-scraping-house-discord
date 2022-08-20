@@ -7,7 +7,6 @@ from .constants import *
 import datetime
 import json
 
-
 class Kijiji:
     def __init__(self):
         self.base_url = KIJIJI
@@ -23,6 +22,9 @@ class Kijiji:
     def scrape_data(self):
         while True:
             for loop in self.soup.find_all('div', class_="clearfix"):
+                with open('data.json', 'r') as f:
+                    json_data = json.load(f)
+                print(json_data)
                 try:
                     address = loop.find(
                         'a', class_="title").text.rstrip().lstrip().capitalize()
@@ -31,6 +33,7 @@ class Kijiji:
                 if address not in self.address_list:
                     try:
                         url = loop.find('a', class_="title").get('href')
+                        pid = url.split("/")[-1]
                     except AttributeError:
                         continue
                     try:
@@ -52,14 +55,13 @@ class Kijiji:
                         continue
                     else:
                         data = [url, address, img, price, local]
-                    pid = url.split("/")[-1]
                     self.my_dict ={
                         'Pid': pid,
                         'Date': str(self.time)
                     }
                     with open("data.json", "a", ) as file:
                         json.dump(self.my_dict, file, indent=2)
-                    self.address_list.append(data)
+                    #self.address_list.append(data)
                     send_webhook(data)
                 else:
                     self.payload()
