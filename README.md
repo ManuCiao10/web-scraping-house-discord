@@ -60,6 +60,7 @@ Improvement:
 1.2 Add PID to compared insted of the address name
 1.3 Add SQL database
 1.4 Check API Kijiji
+1.5 Read The pages documentation API kijiji
 
 1.  See how to interact with Functions
 2.  change syntax for check the new how calling the initial function
