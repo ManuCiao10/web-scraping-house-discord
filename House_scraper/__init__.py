@@ -10,6 +10,7 @@ def session():
 def scrape_data():
     _scraper.scrape_data()
 
+
 # def set_user_agent(user_agent):
 #     _scraper.set_user_agent(user_agent)
 

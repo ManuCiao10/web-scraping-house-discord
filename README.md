@@ -56,6 +56,9 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
+1.1 Add kijiji first houses published newest
+1.2 Add PID to compared insted of the address name
+
 1.  See how to interact with Functions
 2.  change syntax for check the new how calling the initial function
 3.  Test Code for 24h

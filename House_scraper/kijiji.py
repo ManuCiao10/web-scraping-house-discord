@@ -23,9 +23,9 @@ class Kijiji:
             for loop in self.soup.find_all('div', class_="clearfix"):
                 try:
                     currentDT = datetime.datetime.now()
-                    print(str(currentDT))
                     address = loop.find(
                         'a', class_="title").text.rstrip().lstrip().capitalize()
+                    print(str(currentDT))
                     print(address)
                 except AttributeError:
                     continue
