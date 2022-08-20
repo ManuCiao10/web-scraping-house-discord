@@ -1,32 +1,31 @@
+from audioop import add
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
-from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 from .constants import *
 import datetime
+import json
+
 
 class Kijiji:
     def __init__(self):
         self.base_url = KIJIJI
         self.session = requests.Session()
-        self.house_list = []
         self.address_list = []
+        self.time = datetime.date.today()
 
     def payload(self):
         page = self.session.get(
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520")
         self.soup = BeautifulSoup(page.content, 'lxml')
-        
+
     def scrape_data(self):
         while True:
             for loop in self.soup.find_all('div', class_="clearfix"):
                 try:
-                    currentDT = datetime.datetime.now()
                     address = loop.find(
                         'a', class_="title").text.rstrip().lstrip().capitalize()
-                    print(str(currentDT))
-                    print(address)
                 except AttributeError:
                     continue
                 if address not in self.address_list:
@@ -35,7 +34,8 @@ class Kijiji:
                     except AttributeError:
                         continue
                     try:
-                        price = loop.find('div', class_="price").text.split(",")[0]
+                        price = loop.find(
+                            'div', class_="price").text.split(",")[0]
                     except AttributeError:
                         continue
                     try:
@@ -52,12 +52,18 @@ class Kijiji:
                         continue
                     else:
                         data = [url, address, img, price, local]
-                    self.house_list.append(data)
-                    self.address_list.append(address)
+                    pid = url.split("/")[-1]
+                    self.my_dict ={
+                        'Pid': pid,
+                        'Date': str(self.time)
+                    }
+                    with open("data.json", "a", ) as file:
+                        json.dump(self.my_dict, file, indent=2)
+                    self.address_list.append(data)
                     send_webhook(data)
                 else:
                     self.payload()
-                
+
 
 def send_webhook(data):
     webhook = DiscordWebhook(
