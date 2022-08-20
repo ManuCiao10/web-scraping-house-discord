@@ -62,17 +62,18 @@ Improvement:
 4. Check API Kijiji
 5. Read The pages documentation API kijiji
 6. UI like Tinder house
-7. See how to interact with Functions
-8. change syntax for check the new how calling the initial function
-9. Test Code for 24h
-10. Compact same sintax
-11. Add random User Agent
-12. Add send message when proxies are getting banned
-13. add payment check discord
-14. convert code in software
-15. Add only new houses TOOLS and it must run 24/7 and NOT stop
-16. Implemantation with Fast API
-17. add User Interface users when he can type the price and the city
+7. Django
+8. See how to interact with Functions
+9. change syntax for check the new how calling the initial function
+10. Test Code for 24h
+11. Compact same sintax
+12. Add random User Agent
+13. Add send message when proxies are getting banned
+14. add payment check discord
+15. convert code in software
+16. Add only new houses TOOLS and it must run 24/7 and NOT stop
+17. Implemantation with Fast API
+18. add User Interface users when he can type the price and the city
 
 ## Deployment
 
