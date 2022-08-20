@@ -58,6 +58,8 @@ Improvement:
 
 1.1 Add kijiji first houses published newest
 1.2 Add PID to compared insted of the address name
+1.3 Add SQL database
+1.4 Check API Kijiji
 
 1.  See how to interact with Functions
 2.  change syntax for check the new how calling the initial function
@@ -70,6 +72,10 @@ Improvement:
 9.  Add only new houses TOOLS and it must run 24/7 and NOT stop
 10. Implemantation with Fast API
 11. add User Interface users when he can type the price and the city
+
+## Deployment
+
+If you would like to run this 24/7 off your personal machine I would reccomend using the free credit given with google cloud, and create a server. You can make sure it runs all the time with a npm package named PM2 which will restart if errors or crashes happen.
 
 ## Contributing
 
