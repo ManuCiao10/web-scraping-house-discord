@@ -56,17 +56,17 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-01. See how to interact with Functions
-02. change syntax for check the new how calling the initial function   
-1. Test Code for 24h
-2. Compact same sintax 
-3. Add random User Agent
-4. Add send message when proxies are getting banned
-5. add payment check discord
-6. convert code in software
-7. Add only new houses TOOLS and it must run 24/7 and NOT stop
-8. Implemantation with Fast API
-9. add User Interface users when he can type the price and the city
+1.  See how to interact with Functions
+2.  change syntax for check the new how calling the initial function
+3.  Test Code for 24h
+4.  Compact same sintax
+5.  Add random User Agent
+6.  Add send message when proxies are getting banned
+7.  add payment check discord
+8.  convert code in software
+9.  Add only new houses TOOLS and it must run 24/7 and NOT stop
+10. Implemantation with Fast API
+11. add User Interface users when he can type the price and the city
 
 ## Contributing
 

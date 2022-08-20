@@ -2,10 +2,10 @@ from typing import Any
 import House_scraper
 import time
 
-from House_scraper import kijiji 
+from House_scraper import kijiji
 
 #logisquebec = House_scraper.LogiScraper()
-session = House_scraper.kijiji()
+provaaa = House_scraper.Kijiji()
 
 # def testCase(logisquebec):
 #     start = time.time()
@@ -18,9 +18,16 @@ session = House_scraper.kijiji()
 #     end = time.time()
 #     print("Time taken: ", end - start)
 
+def testCase(provaaa):
+    start = time.time()
+    provaaa.payload()
+    provaaa.scrape_data()
+    end = time.time()
+    print("Time taken: ", end - start)
+
 print("=======HOUSE_SCRAPER=======")
 #testCase(logisquebec)
+testCase(provaaa)
 #House_scraper.Oklouer()
-House_scraper.kijiji()
 
 

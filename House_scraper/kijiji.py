@@ -1,24 +1,26 @@
-from mimetypes import init
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
+from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 from .constants import *
 import datetime
 
-class kijiji:
-    def __init__(self) -> None:
-        pass
-    def session(self):
+class Kijiji:
+    def __init__(self):
         self.base_url = KIJIJI
         self.session = requests.Session()
+        self.house_list = []
+        self.address_list = []
+
+    def payload(self):
         page = self.session.get(
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520")
-        soup = BeautifulSoup(page.content, 'lxml')
-        house_list = []
-        address_list = []
+        self.soup = BeautifulSoup(page.content, 'lxml')
+        
+    def scrape_data(self):
         while True:
-            for loop in soup.find_all('div', class_="clearfix"):
+            for loop in self.soup.find_all('div', class_="clearfix"):
                 try:
                     currentDT = datetime.datetime.now()
                     print(str(currentDT))
@@ -27,7 +29,7 @@ class kijiji:
                     print(address)
                 except AttributeError:
                     continue
-                if address not in address_list:
+                if address not in self.address_list:
                     try:
                         url = loop.find('a', class_="title").get('href')
                     except AttributeError:
@@ -50,12 +52,12 @@ class kijiji:
                         continue
                     else:
                         data = [url, address, img, price, local]
-                    house_list.append(data)
-                    address_list.append(address)
+                    self.house_list.append(data)
+                    self.address_list.append(address)
                     send_webhook(data)
                 else:
-                    print("New House ?")
-                    kijiji.init()
+                    self.payload()
+                
 
 def send_webhook(data):
     webhook = DiscordWebhook(
@@ -82,9 +84,3 @@ def send_webhook(data):
     webhook.add_embed(embed)
     resp = webhook.execute()
     time.sleep(2)
-
-
-
-if __name__ == "__main__":
-    kijiji()
-
