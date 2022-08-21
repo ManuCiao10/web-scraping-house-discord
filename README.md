@@ -56,8 +56,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1. Add kijiji first houses published newest
-2. Add PID to compared insted of the address name
+2. Add PM2 restart after bug
 3. Add SQL database
 4. Check API Kijiji
 5. Read The pages documentation API kijiji
