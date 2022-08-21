@@ -2,7 +2,6 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 from .constants import *
 import time
 
-
 def on_message(status_code: int, website: str):
     webhook = DiscordWebhook(
         url=f"{PREFIX}{ERRORWEBHOOK}"
