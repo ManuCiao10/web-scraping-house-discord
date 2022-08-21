@@ -56,24 +56,26 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1. Remove data after TOT.days
-2. Add PM2 restart after bug
-3. Add SQL database
-4. Check API Kijiji
-5. Read The pages documentation API kijiji
-6. UI like Tinder house
-7. Django
-8. See how to interact with Functions
-9. change syntax for check the new how calling the initial function
-10. Test Code for 24h
-11. Compact same sintax
-12. Add random User Agent
-13. Add send message when proxies are getting banned
-14. add payment check discord
-15. convert code in software
-16. Add only new houses TOOLS and it must run 24/7 and NOT stop
-17. Implemantation with Fast API
-18. add User Interface users when he can type the price and the city
+1. test if everthing is working kijiji and change syntax for others codes
+2. Check how to run the code
+3. Remove data after Tot.days
+4. Add PM2 restart after bug
+5. Add SQL database
+6. Check API Kijiji
+7. Read The pages documentation API kijiji
+8. UI like Tinder house
+9. Django
+10. See how to interact with Functions
+11. change syntax for check the new how calling the initial function
+12. Test Code for 24h
+13. Compact same sintax
+14. Add random User Agent
+15. Add send message when proxies are getting banned
+16. add payment check discord
+17. convert code in software
+18. Add only new houses TOOLS and it must run 24/7 and NOT stop
+19. Implemantation with Fast API
+20. add User Interface users when he can type the price and the city
 
 ## Deployment
 
