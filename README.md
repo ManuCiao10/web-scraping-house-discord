@@ -56,6 +56,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
+1. Remove data after TOT.days
 2. Add PM2 restart after bug
 3. Add SQL database
 4. Check API Kijiji
