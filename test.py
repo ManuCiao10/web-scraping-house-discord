@@ -22,6 +22,7 @@ def testCase(provaaa):
     start = time.time()
     provaaa.payload()
     provaaa.scrape_data()
+    provaaa.on_message()
     end = time.time()
     print("Time taken: ", end - start)
 

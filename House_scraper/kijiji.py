@@ -7,9 +7,10 @@ from .constants import *
 import datetime
 import csv
 import logging
+from .utils import *
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+# logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.DEBUG)
 
 
 class Kijiji:
@@ -24,6 +25,8 @@ class Kijiji:
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
         )
         self.soup = BeautifulSoup(page.content, "lxml")
+        if not page :
+            return on_message(page.status_code, self.base_url)
 
     def scrape_data(self):
         while True:
@@ -35,7 +38,7 @@ class Kijiji:
                         pid = url.split("/")[-1]
                         print("PID", pid)
                     except AttributeError:
-                        logger.debug(f"URL NOT FOUND\n")
+                        print("URL NOT FOUND\n")
                         continue
 
                     if pid not in self.pid_list:
@@ -47,12 +50,12 @@ class Kijiji:
                                 .capitalize()
                             )
                         except AttributeError:
-                            logger.debug(f"ADDRESS NOT FOUND\n")
+                            print("ADDRESS NOT FOUND\n")
                             continue
                         try:
                             price = loop.find("div", class_="price").text.split(",")[0]
                         except AttributeError:
-                            logger.debug(f"PRICE NOT FOUND\n")
+                            print("PRICE NOT FOUND\n")
                             continue
                         try:
                             local = (
@@ -62,7 +65,7 @@ class Kijiji:
                                 .lstrip()
                             )
                         except AttributeError:
-                            logger.debug(f"LOCAL NOT FOUND\n")
+                            print("LOCAL NOT FOUND\n")
                             continue
                         try:
                             img = (
@@ -79,14 +82,13 @@ class Kijiji:
                         with open("data.csv", "a") as csvfile:
                             writer = csv.writer(csvfile)
                             writer.writerow([pid])
-                            writer.writerow([self.time])
                         self.pid_list.add(pid)
                         send_webhook(data)
                     else:
-                        logger.debug(f"RUNNING ANOTHER REQUESTS\n")
+                        print("RUNNING ANOTHER REQUESTS\n")
                         self.payload()
             except:
-                logger.debug(f"LOOP ISSUES\n")
+                print("LOOP ISSUES\n")
                 self.payload()
 
 
