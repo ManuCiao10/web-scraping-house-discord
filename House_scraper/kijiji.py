@@ -79,6 +79,7 @@ class Kijiji:
                         with open("data.csv", "a") as csvfile:
                             writer = csv.writer(csvfile)
                             writer.writerow([pid])
+                            writer.writerow([self.time])
                         self.pid_list.add(pid)
                         send_webhook(data)
                     else:

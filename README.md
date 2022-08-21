@@ -56,7 +56,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1. test if everthing is working kijiji and change syntax for others codes
+1. Change syntax for others codes
 2. Check how to run the code
 3. Remove data after Tot.days
 4. Add PM2 restart after bug
