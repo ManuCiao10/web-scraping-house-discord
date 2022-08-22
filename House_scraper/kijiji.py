@@ -18,25 +18,24 @@ class Kijiji:
         self.base_url = KIJIJI
         self.session = requests.Session()
         self.pid_list = set()
-        self.time = datetime.date.today()
+        self.time = datetime.datetime.now()
 
     def payload(self):
         page = self.session.get(
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
         )
         self.soup = BeautifulSoup(page.content, "lxml")
-        if not page :
+        if not page:
             return on_message(page.status_code, self.base_url)
 
     def scrape_data(self):
         while True:
-            try:
+            #try:
                 loops = self.soup.find_all("div", class_="clearfix")
                 for loop in loops:
                     try:
                         url = loop.find("a", class_="title").get("href")
                         pid = url.split("/")[-1]
-                        print("PID", pid)
                     except AttributeError:
                         print("URL NOT FOUND\n")
                         continue
@@ -79,17 +78,21 @@ class Kijiji:
                             continue
                         else:
                             data = [url, address, img, price, local]
+
                         with open("data.csv", "a") as csvfile:
                             writer = csv.writer(csvfile)
-                            writer.writerow([pid, self.time])
-                        self.pid_list.add(pid)
+                            writer.writerow(
+                                [pid, price.rstrip().lstrip(), self.time]
+                            )
+                            read_len_line(csvfile, self.base_url)
+                            self.pid_list.add(pid)
                         send_webhook(data)
                     else:
                         print("RUNNING ANOTHER REQUESTS\n")
                         self.payload()
-            except:
-                print("LOOP ISSUES\n")
-                self.payload()
+            # except:
+            #     print("LOOP ISSUES\n")
+            #     self.payload()
 
 
 def send_webhook(data):
