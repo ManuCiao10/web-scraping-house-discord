@@ -56,8 +56,8 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1. Change syntax for others codes
-2. Check how to run the code
+1. Change syntax for others codes https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
+2. Check how to run the code with return in function
 3. Remove data after Tot.days
 4. Add PM2 restart after bug
 5. Add SQL database
@@ -65,17 +65,13 @@ Improvement:
 7. Read The pages documentation API kijiji
 8. UI like Tinder house
 9. Django
-10. See how to interact with Functions
-11. change syntax for check the new how calling the initial function
-12. Test Code for 24h
-13. Compact same sintax
-14. Add random User Agent
-15. Add send message when proxies are getting banned
-16. add payment check discord
-17. convert code in software
-18. Add only new houses TOOLS and it must run 24/7 and NOT stop
-19. Implemantation with Fast API
-20. add User Interface users when he can type the price and the city
+10. Test Code for 24h
+11. Add random User Agent
+12. add payment check discord
+13. convert code in software
+14. Add only new houses TOOLS and it must run 24/7 and NOT stop
+15. Implemantation with Fast API
+16. add User Interface users when he can type the price and the city
 
 ## Deployment
 
