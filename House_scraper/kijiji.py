@@ -1,3 +1,4 @@
+from operator import delitem
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
@@ -80,7 +81,7 @@ class Kijiji:
                             data = [url, address, img, price, local]
                         with open("data.csv", "a") as csvfile:
                             writer = csv.writer(csvfile)
-                            writer.writerow([pid])
+                            writer.writerow([pid, self.time])
                         self.pid_list.add(pid)
                         send_webhook(data)
                     else:
