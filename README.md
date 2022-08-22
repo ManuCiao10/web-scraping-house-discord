@@ -58,14 +58,12 @@ Improvement:
 
 1. Change syntax for others codes https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
 2. Check how to run the code with return in function
-3. Remove data after Tot.days
 4. Add PM2 restart after bug
 5. Add SQL database
 6. Check API Kijiji
 7. Read The pages documentation API kijiji
 8. UI like Tinder house
 9. Django
-10. Test Code for 24h
 11. Add random User Agent
 12. add payment check discord
 13. convert code in software
