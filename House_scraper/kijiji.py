@@ -30,16 +30,15 @@ class Kijiji:
 
     def scrape_data(self):
         while True:
-            #try:
+            try:
                 loops = self.soup.find_all("div", class_="clearfix")
                 for loop in loops:
                     try:
                         url = loop.find("a", class_="title").get("href")
                         pid = url.split("/")[-1]
                     except AttributeError:
-                        print("URL NOT FOUND\n")
+                        print(datetime.datetime.now(), "URL NOT FOUND\n")
                         continue
-
                     if pid not in self.pid_list:
                         try:
                             address = (
@@ -49,12 +48,12 @@ class Kijiji:
                                 .capitalize()
                             )
                         except AttributeError:
-                            print("ADDRESS NOT FOUND\n")
+                            print(datetime.datetime.now(), "ADDRESS NOT FOUND\n")
                             continue
                         try:
                             price = loop.find("div", class_="price").text.split(",")[0]
                         except AttributeError:
-                            print("PRICE NOT FOUND\n")
+                            print(datetime.datetime.now(), "PRICE NOT FOUND\n")
                             continue
                         try:
                             local = (
@@ -64,7 +63,7 @@ class Kijiji:
                                 .lstrip()
                             )
                         except AttributeError:
-                            print("LOCAL NOT FOUND\n")
+                            print(datetime.datetime.now(), "LOCAL NOT FOUND\n")
                             continue
                         try:
                             img = (
@@ -81,18 +80,16 @@ class Kijiji:
 
                         with open("data.csv", "a") as csvfile:
                             writer = csv.writer(csvfile)
-                            writer.writerow(
-                                [pid, price.rstrip().lstrip(), self.time]
-                            )
+                            writer.writerow([pid, price.rstrip().lstrip(), self.time])
                             read_len_line(csvfile, self.base_url)
                             self.pid_list.add(pid)
                         send_webhook(data)
                     else:
-                        print("RUNNING ANOTHER REQUESTS\n")
+                        print(datetime.datetime.now(), "RUNNING ANOTHER REQUESTS\n")
                         self.payload()
-            # except:
-            #     print("LOOP ISSUES\n")
-            #     self.payload()
+            except:
+                print(datetime.datetime.now(), "LOOP ISSUES\n")
+                self.payload()
 
 
 def send_webhook(data):
