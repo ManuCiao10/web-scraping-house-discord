@@ -57,14 +57,12 @@ Actually the script support only Discord. Will be implementate very soon a versi
 Improvement:
 
 1. Change syntax for others codes https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
-2. Check how to run the code with return in function
 5. Add SQL database
 6. Check API Kijiji
 8. UI like Tinder house
 9. Django
 11. Add random User Agent
 12. add payment check discord
-13. convert code in software
 15. Implemantation with Fast API
 16. add User Interface users when he can type the price and the city
 
