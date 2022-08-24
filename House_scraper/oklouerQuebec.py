@@ -2,7 +2,7 @@ import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
 from bs4 import BeautifulSoup
-from .constants import *
+from constants import *
 
 class Oklouer:
     def __init__(self):

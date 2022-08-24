@@ -56,17 +56,19 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
+1. Put ech module singular and run them in a server
 1. Add SQL database
-2. Check API Kijiji
-3. Django
-4. Add random User Agent
-5. add payment check discord
-6. Implemantation with Fast API
-7. add User Interface users when he can type the price and the city
+1. Check API Kijiji
+1. Django
+1. Add random User Agent
+1. add payment check discord
+1. Implemantation with Fast API
+1. add User Interface users when he can type the price and the city
 
 ## LINK UTILS
 
 1. https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
+2. https://github.com/niewiemczego/nike-stock-monitor/blob/main/nike_stock.py
 
 ## Deployment
 
