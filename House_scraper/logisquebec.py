@@ -15,7 +15,7 @@ logger.debug(f"Proxy details: {ip['ip']}\n")
 
 class LogiScraper:
     """Class for creating LogiScraper Iterators"""
-
+    
     base_url = LOGIS_QUEBEC
     default_headers = {
         'Accept-Language': 'en-US,en;q=0.5',

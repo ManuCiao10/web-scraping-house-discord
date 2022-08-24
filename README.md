@@ -59,7 +59,6 @@ Improvement:
 1. Change syntax for others codes https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
 5. Add SQL database
 6. Check API Kijiji
-8. UI like Tinder house
 9. Django
 11. Add random User Agent
 12. add payment check discord
