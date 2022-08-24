@@ -56,14 +56,17 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1. Change syntax for others codes https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
-5. Add SQL database
-6. Check API Kijiji
-9. Django
-11. Add random User Agent
-12. add payment check discord
-15. Implemantation with Fast API
-16. add User Interface users when he can type the price and the city
+1. Add SQL database
+2. Check API Kijiji
+3. Django
+4. Add random User Agent
+5. add payment check discord
+6. Implemantation with Fast API
+7. add User Interface users when he can type the price and the city
+
+## LINK UTILS
+
+1. https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
 
 ## Deployment
 
