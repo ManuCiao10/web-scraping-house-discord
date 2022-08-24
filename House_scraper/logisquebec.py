@@ -1,4 +1,4 @@
-from .constants import *
+from constants import *
 from requests_html import HTMLSession
 from random_user_agent.user_agent import UserAgent
 from random_user_agent.params import SoftwareName, OperatingSystem

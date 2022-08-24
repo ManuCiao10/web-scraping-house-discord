@@ -3,15 +3,14 @@ import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
 from bs4 import BeautifulSoup
-from .constants import *
+from constants import *
 import datetime
 import csv
 import logging
-from .utils import *
+from utils import *
 
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(level=logging.DEBUG)
-
 
 class Kijiji:
     def __init__(self):
@@ -19,6 +18,8 @@ class Kijiji:
         self.session = requests.Session()
         self.pid_list = set()
         self.time = datetime.datetime.now()
+        print(self.time)
+        return self.payload()
 
     def payload(self):
         page = self.session.get(
@@ -27,6 +28,8 @@ class Kijiji:
         self.soup = BeautifulSoup(page.content, "lxml")
         if not page:
             return on_message(page.status_code, self.base_url)
+        else:
+            return self.scrape_data()
 
     def scrape_data(self):
         while True:
@@ -105,3 +108,6 @@ def send_webhook(data):
     webhook.add_embed(embed)
     resp = webhook.execute()
     time.sleep(2)
+
+if __name__ == "__main__":
+    Kijiji()

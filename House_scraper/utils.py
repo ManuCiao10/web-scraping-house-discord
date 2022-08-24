@@ -1,6 +1,6 @@
 from io import TextIOWrapper
 from discord_webhook import DiscordWebhook, DiscordEmbed
-from .constants import *
+from constants import *
 import time
 
 
