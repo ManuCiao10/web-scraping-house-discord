@@ -26,76 +26,78 @@ class Kijiji:
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
         )
         self.soup = BeautifulSoup(page.content, "lxml")
+        loops = self.soup.find_all("div", class_="clearfix")
+        if not loops:
+            print("<|ERROR DP FOUND|>\n")
+            self.payload()
         if not page:
-            return on_message(page.status_code, self.base_url)
+            on_message(page.status_code, self.base_url)
         else:
-            return self.scrape_data()
+            self.scrape_data(loops)
 
-    def scrape_data(self):
+    def scrape_data(self, loops):
         while True:
-            try:
-                loops = self.soup.find_all("div", class_="clearfix")
-                for loop in loops:
-                    try:
-                        url = loop.find("a", class_="title").get("href")
+            for loop in loops:
+                try: # ADD awaiting function
+                    url = loop.find("a", class_="title").get("href")
+                    if url:
                         pid = url.split("/")[-1]
-                    except AttributeError as err:
-                        print(err.args)
-                        print(datetime.datetime.now(), "<|URL NOT FOUND|>\n")
+                except AttributeError as err:
+                    print(err.args)
+                    print(datetime.datetime.now(), "<|URL NOT FOUND|>\n")
+                    continue
+                if pid not in self.pid_list:
+                    try:
+                        address = (
+                            loop.find("a", class_="title")
+                            .text.rstrip()
+                            .lstrip()
+                            .capitalize()
+                        )
+                    except AttributeError:
+                        print(datetime.datetime.now(), "ADDRESS NOT FOUND\n")
                         continue
-                    if pid not in self.pid_list:
-                        try:
-                            address = (
-                                loop.find("a", class_="title")
-                                .text.rstrip()
-                                .lstrip()
-                                .capitalize()
-                            )
-                        except AttributeError:
-                            print(datetime.datetime.now(), "ADDRESS NOT FOUND\n")
-                            continue
-                        try:
-                            price = loop.find("div", class_="price").text.split(",")[0]
-                        except AttributeError:
-                            print(datetime.datetime.now(), "PRICE NOT FOUND\n")
-                            continue
-                        try:
-                            local = (
-                                loop.find("div", class_="location")
-                                .find("span")
-                                .text.rstrip()
-                                .lstrip()
-                            )
-                        except AttributeError:
-                            print(datetime.datetime.now(), "LOCAL NOT FOUND\n")
-                            continue
-                        try:
-                            img = (
-                                loop.find("div", class_="image")
-                                .find("img")
-                                .get("data-src")
-                            )
-                        except AttributeError:
-                            continue
-                        if img == None:
-                            continue
-                        else:
-                            data = [url, address, img, price, local]
-
-                        with open("data.csv", "a") as csvfile:
-                            writer = csv.writer(csvfile)
-                            writer.writerow([pid, price.rstrip().lstrip(), self.time])
-                            read_len_line(csvfile, self.base_url)
-                            self.pid_list.add(pid)
-                        send_webhook(data)
+                    try:
+                        price = loop.find("div", class_="price").text.split(",")[0]
+                    except AttributeError:
+                        print(datetime.datetime.now(), "PRICE NOT FOUND\n")
+                        continue
+                    try:
+                        local = (
+                            loop.find("div", class_="location")
+                            .find("span")
+                            .text.rstrip()
+                            .lstrip()
+                        )
+                    except AttributeError:
+                        print(datetime.datetime.now(), "LOCAL NOT FOUND\n")
+                        continue
+                    try:
+                        img = (
+                            loop.find("div", class_="image")
+                            .find("img")
+                            .get("data-src")
+                        )
+                    except AttributeError:
+                        continue
+                    if img == None:
+                        continue
                     else:
-                        print(datetime.datetime.now(), "<|RUNNING ANOTHER REQUESTS|>\n")
-                        self.payload()
-                        continue
-            except ValueError as err:
-                print(err.args)
-                print(datetime.datetime.now(), "LOOP ISSUES\n")
-                self.payload()
+                        data = [url, address, img, price, local]
+
+                    with open("data.csv", "a") as csvfile:
+                        writer = csv.writer(csvfile)
+                        writer.writerow([pid, price.rstrip().lstrip(), self.time])
+                        read_len_line(csvfile, self.base_url)
+                        self.pid_list.add(pid)
+                    send_webhook(data)
+                else:
+                    print(datetime.datetime.now(), "<|RUNNING ANOTHER REQUESTS|>\n")
+                    self.payload()
+        # except ValueError as err:
+        #     print(err.args)
+        #     print(datetime.datetime.now(), "LOOP ISSUES\n")
+        #     self.payload()
 
 
 def send_webhook(data):

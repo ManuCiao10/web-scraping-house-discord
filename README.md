@@ -56,6 +56,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
+1. Try to add AWAITING FUNCTION in url to avoid the infinite loop due python can do max 999 recall function
 1. Put each module singular and run them in a server
 1. Add SQL database
 1. Django
