@@ -57,17 +57,18 @@ Actually the script support only Discord. Will be implementate very soon a versi
 Improvement:
 
 1. Try to add AWAITING FUNCTION in url to avoid the infinite loop due python can do max 999 recall function
-2. add proxies or change user agent if is not loops in KIJIJI
-3. Check to sned a message when the program stop to run
-4. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE CLASS AVAILABLE in the html
-5. Put each module singular and run them in a server
-6. Add SQL database
-7. Add color for Error output
-8. Django
-9. Add random User Agent
-10. add payment check discord
-11. Implemantation with Fast API
-12. add User Interface users when he can type the price and the city
+2. Check even how to scrape BAckend website
+3. add proxies or change user agent if is not loops in KIJIJI
+4. Check to sned a message when the program stop to run
+5. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE CLASS AVAILABLE in the html
+6. Put each module singular and run them in a server
+7. Add SQL database
+8. Add color for Error output
+9. Django
+10. Add random User Agent
+11. add payment check discord
+12. Implemantation with Fast API
+13. add User Interface users when he can type the price and the city
 
 ## LINK UTILS
 
@@ -78,7 +79,7 @@ Improvement:
 ## Deployment
 
 If you would like to run this 24/7 off your personal machine I would reccomend using the free credit given with google cloud, and create a server. You can make sure it runs all the time with a npm package named PM2 which will restart if errors or crashes happen.
-    
+
 ## Contributing
 
 To contribute follow these steps:
