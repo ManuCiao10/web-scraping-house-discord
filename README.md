@@ -57,13 +57,17 @@ Actually the script support only Discord. Will be implementate very soon a versi
 Improvement:
 
 1. Try to add AWAITING FUNCTION in url to avoid the infinite loop due python can do max 999 recall function
-1. Put each module singular and run them in a server
-1. Add SQL database
-1. Django
-1. Add random User Agent
-1. add payment check discord
-1. Implemantation with Fast API
-1. add User Interface users when he can type the price and the city
+2. add proxies or change user agent if is not loops in KIJIJI
+3. Check to sned a message when the program stop to run
+4. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE IF AND ELSE
+5. Put each module singular and run them in a server
+6. Add SQL database
+7. Add color for Error output
+8. Django
+9. Add random User Agent
+10. add payment check discord
+11. Implemantation with Fast API
+12. add User Interface users when he can type the price and the city
 
 ## LINK UTILS
 

@@ -34,7 +34,8 @@ class Kijiji:
         loops = self.soup.find_all("div", class_="clearfix")
         if not loops:
             print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|NO DATA FOUND|>")
-            time.sleep(15)
+            # add proxies or change user agent
+            time.sleep(90)
             return Kijiji.payload(self)
         else:
             return Kijiji.scrape_data(self, loops)
@@ -54,7 +55,6 @@ class Kijiji:
                     continue
                 if pid not in self.pid_list:
                     try:
-
                         address = (
                             loop.find("a", class_="title")
                             .text.rstrip()
@@ -62,18 +62,10 @@ class Kijiji:
                             .capitalize()
                         )
                     except AttributeError:
-                        print(
-                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                            "ADDRESS NOT FOUND",
-                        )
                         continue
                     try:
                         price = loop.find("div", class_="price").text.split(",")[0]
                     except AttributeError:
-                        print(
-                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                            "PRICE NOT FOUND",
-                        )
                         continue
                     try:
                         local = (
@@ -83,10 +75,6 @@ class Kijiji:
                             .lstrip()
                         )
                     except AttributeError:
-                        print(
-                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                            "LOCAL NOT FOUND",
-                        )
                         continue
                     try:
                         img = (
