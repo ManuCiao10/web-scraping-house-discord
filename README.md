@@ -56,9 +56,8 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 Improvement:
 
-1. Put ech module singular and run them in a server
+1. Put each module singular and run them in a server
 1. Add SQL database
-1. Check API Kijiji
 1. Django
 1. Add random User Agent
 1. add payment check discord
