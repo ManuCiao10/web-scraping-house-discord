@@ -59,7 +59,7 @@ Improvement:
 1. Try to add AWAITING FUNCTION in url to avoid the infinite loop due python can do max 999 recall function
 2. add proxies or change user agent if is not loops in KIJIJI
 3. Check to sned a message when the program stop to run
-4. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE IF AND ELSE
+4. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE CLASS AVAILABLE in the html
 5. Put each module singular and run them in a server
 6. Add SQL database
 7. Add color for Error output
@@ -73,11 +73,12 @@ Improvement:
 
 1. https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
 2. https://github.com/niewiemczego/nike-stock-monitor/blob/main/nike_stock.py
+3. https://github.com/yasserqureshi1/Sneaker-Monitors
 
 ## Deployment
 
 If you would like to run this 24/7 off your personal machine I would reccomend using the free credit given with google cloud, and create a server. You can make sure it runs all the time with a npm package named PM2 which will restart if errors or crashes happen.
-
+    
 ## Contributing
 
 To contribute follow these steps:
