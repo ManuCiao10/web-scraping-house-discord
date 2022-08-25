@@ -22,6 +22,7 @@ class Kijiji:
         return self.payload()
 
     def payload(self):
+        print(datetime.datetime.now(), "<|PAYLOAD|>\n")
         page = self.session.get(
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
         )
@@ -30,25 +31,25 @@ class Kijiji:
         self.soup = BeautifulSoup(page.content, "lxml")
         loops = self.soup.find_all("div", class_="clearfix")
         if not loops:
-            print(loops.status_code)
             print(datetime.datetime.now(), "<|NO DATA FOUND|>\n")
-            time.sleep(30)
-            return self.payload()
+            time.sleep(15)
+            return Kijiji.payload(self)
         else:
-            return self.scrape_data(loops)
+            return Kijiji.scrape_data(self, loops)
 
     def scrape_data(self, loops):
         while True:
             for loop in loops:
                 try:  # ADD awaiting function
-                    self.pid_list.add(loop.find("a")["href"].split("/")[-1])
                     url = loop.find("a", class_="title").get("href")
                     pid = url.split("/")[-1]
                 except AttributeError as err:
-                    print(datetime.datetime.now(), '<|URL NOT FOUND {}|>'.format(err))
+                    # print(err)
+                    print(datetime.datetime.now(), "<|URL NOT FOUND|>\n")
                     continue
                 if pid not in self.pid_list:
                     try:
+
                         address = (
                             loop.find("a", class_="title")
                             .text.rstrip()
@@ -71,7 +72,7 @@ class Kijiji:
                             .lstrip()
                         )
                     except AttributeError:
-                        print(datetime.datetime.now(), "<|LOCAL NOT FOUND|>\n")
+                        print(datetime.datetime.now(), "LOCAL NOT FOUND\n")
                         continue
                     try:
                         img = (
@@ -80,38 +81,35 @@ class Kijiji:
                     except AttributeError:
                         continue
                     if img == None:
-                        continue
-                    else:
-                        data = [url, address, img, price, local]
-
+                        img = "https://logos-download.com/wp-content/uploads/2020/06/Kijiji_Logo-700x382.png"
+                    data = [url, address, img, price, local]
+                    self.pid_list.add(pid)
                     with open("data.csv", "a") as csvfile:
                         writer = csv.writer(csvfile)
                         writer.writerow([pid, price.rstrip().lstrip(), self.time])
                         read_len_line(csvfile, self.base_url)
                         print(datetime.datetime.now(), "<|DATA WRITTEN|>\n")
-                    send_webhook(data)
+                    Kijiji.send_webhook(data)
                 else:
-                    print(datetime.datetime.now(), "<|RUNNING ANOTHER REQUESTS|>\n")
-                    self.payload()
-        # except ValueError as err:
-        #     print(err.args)
-        #     print(datetime.datetime.now(), "LOOP ISSUES\n")
-        #     self.payload()
+                    print(datetime.datetime.now(), "<|PID ALREADY EXISTS|>\n")
+                    Kijiji.payload(self)
 
-
-def send_webhook(data):
-    webhook = DiscordWebhook(url=f"{PREFIX}{KIJIJIWEBHOOK}")
-    embed = DiscordEmbed(
-        title=data[1], color=COLOR_DS, url=f"https://www.kijiji.ca{data[0]}"
-    )
-    embed.set_thumbnail(url=data[2])
-    embed.add_embed_field(name="• Area", value=data[4], inline=True)
-    embed.add_embed_field(name="• Price/month", value=f"{data[3]}$", inline=True)
-    embed.set_footer(text="Kijiji_Monitor", icon_url=KIJIJI_IMG)
-    embed.set_timestamp()
-    webhook.add_embed(embed)
-    resp = webhook.execute()
-    time.sleep(2)
+    def send_webhook(data):
+        webhook = DiscordWebhook(url=f"{PREFIX}{KIJIJIWEBHOOK}")
+        embed = DiscordEmbed(
+            title=data[1], color=COLOR_DS, url=f"https://www.kijiji.ca{data[0]}"
+        )
+        embed.set_thumbnail(url=data[2])
+        embed.add_embed_field(name="• Area", value=data[4], inline=True)
+        embed.add_embed_field(name="• Price/month", value=f"{data[3]}$", inline=True)
+        embed.set_footer(text="Kijiji_Monitor", icon_url=KIJIJI_IMG)
+        embed.set_timestamp()
+        webhook.add_embed(embed)
+        resp = webhook.execute()
+        if resp.status_code == 200:
+            print(datetime.datetime.now(), "<|WEBHOOK SENT|>\n")
+        time.sleep(2)
+        return resp
 
 
 if __name__ == "__main__":
