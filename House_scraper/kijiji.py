@@ -25,26 +25,27 @@ class Kijiji:
         page = self.session.get(
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
         )
+        if not page:
+            return on_message(page.status_code, self.base_url)
         self.soup = BeautifulSoup(page.content, "lxml")
         loops = self.soup.find_all("div", class_="clearfix")
         if not loops:
-            print("<|ERROR DP FOUND|>\n")
-            self.payload()
-        if not page:
-            on_message(page.status_code, self.base_url)
+            print(loops.status_code)
+            print(datetime.datetime.now(), "<|NO DATA FOUND|>\n")
+            time.sleep(30)
+            return self.payload()
         else:
-            self.scrape_data(loops)
+            return self.scrape_data(loops)
 
     def scrape_data(self, loops):
         while True:
             for loop in loops:
-                try: # ADD awaiting function
+                try:  # ADD awaiting function
+                    self.pid_list.add(loop.find("a")["href"].split("/")[-1])
                     url = loop.find("a", class_="title").get("href")
-                    if url:
-                        pid = url.split("/")[-1]
+                    pid = url.split("/")[-1]
                 except AttributeError as err:
-                    print(err.args)
-                    print(datetime.datetime.now(), "<|URL NOT FOUND|>\n")
+                    print(datetime.datetime.now(), '<|URL NOT FOUND {}|>'.format(err))
                     continue
                 if pid not in self.pid_list:
                     try:
@@ -70,13 +71,11 @@ class Kijiji:
                             .lstrip()
                         )
                     except AttributeError:
-                        print(datetime.datetime.now(), "LOCAL NOT FOUND\n")
+                        print(datetime.datetime.now(), "<|LOCAL NOT FOUND|>\n")
                         continue
                     try:
                         img = (
-                            loop.find("div", class_="image")
-                            .find("img")
-                            .get("data-src")
+                            loop.find("div", class_="image").find("img").get("data-src")
                         )
                     except AttributeError:
                         continue
@@ -89,7 +88,7 @@ class Kijiji:
                         writer = csv.writer(csvfile)
                         writer.writerow([pid, price.rstrip().lstrip(), self.time])
                         read_len_line(csvfile, self.base_url)
-                        self.pid_list.add(pid)
+                        print(datetime.datetime.now(), "<|DATA WRITTEN|>\n")
                     send_webhook(data)
                 else:
                     print(datetime.datetime.now(), "<|RUNNING ANOTHER REQUESTS|>\n")
