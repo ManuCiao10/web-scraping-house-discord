@@ -12,13 +12,13 @@ from utils import *
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(level=logging.DEBUG)
 
+
 class Kijiji:
     def __init__(self):
         self.base_url = KIJIJI
         self.session = requests.Session()
         self.pid_list = set()
         self.time = datetime.datetime.now()
-        print(self.time)
         return self.payload()
 
     def payload(self):
@@ -39,8 +39,9 @@ class Kijiji:
                     try:
                         url = loop.find("a", class_="title").get("href")
                         pid = url.split("/")[-1]
-                    except AttributeError:
-                        print(datetime.datetime.now(), "URL NOT FOUND\n")
+                    except AttributeError as err:
+                        print(err.args)
+                        print(datetime.datetime.now(), "<|URL NOT FOUND|>\n")
                         continue
                     if pid not in self.pid_list:
                         try:
@@ -88,9 +89,11 @@ class Kijiji:
                             self.pid_list.add(pid)
                         send_webhook(data)
                     else:
-                        print(datetime.datetime.now(), "RUNNING ANOTHER REQUESTS\n")
+                        print(datetime.datetime.now(), "<|RUNNING ANOTHER REQUESTS|>\n")
                         self.payload()
-            except:
+                        continue
+            except ValueError as err:
+                print(err.args)
                 print(datetime.datetime.now(), "LOOP ISSUES\n")
                 self.payload()
 
@@ -108,6 +111,7 @@ def send_webhook(data):
     webhook.add_embed(embed)
     resp = webhook.execute()
     time.sleep(2)
+
 
 if __name__ == "__main__":
     Kijiji()
