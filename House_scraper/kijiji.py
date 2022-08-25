@@ -14,15 +14,17 @@ from utils import *
 
 
 class Kijiji:
+    """Class for creating Kijiji Iterators"""
+
     def __init__(self):
         self.base_url = KIJIJI
         self.session = requests.Session()
         self.pid_list = set()
-        self.time = datetime.datetime.now()
+        self.time = datetime.datetime.now().strftime("%H:%M:%S.%f")
         return self.payload()
 
     def payload(self):
-        print(datetime.datetime.now(), "<|PAYLOAD|>\n")
+        print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|PAYLOAD|>")
         page = self.session.get(
             f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
         )
@@ -31,7 +33,7 @@ class Kijiji:
         self.soup = BeautifulSoup(page.content, "lxml")
         loops = self.soup.find_all("div", class_="clearfix")
         if not loops:
-            print(datetime.datetime.now(), "<|NO DATA FOUND|>\n")
+            print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|NO DATA FOUND|>")
             time.sleep(15)
             return Kijiji.payload(self)
         else:
@@ -45,7 +47,10 @@ class Kijiji:
                     pid = url.split("/")[-1]
                 except AttributeError as err:
                     # print(err)
-                    print(datetime.datetime.now(), "<|URL NOT FOUND|>\n")
+                    print(
+                        datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                        "<|URL NOT FOUND|>",
+                    )
                     continue
                 if pid not in self.pid_list:
                     try:
@@ -57,12 +62,18 @@ class Kijiji:
                             .capitalize()
                         )
                     except AttributeError:
-                        print(datetime.datetime.now(), "ADDRESS NOT FOUND\n")
+                        print(
+                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                            "ADDRESS NOT FOUND",
+                        )
                         continue
                     try:
                         price = loop.find("div", class_="price").text.split(",")[0]
                     except AttributeError:
-                        print(datetime.datetime.now(), "PRICE NOT FOUND\n")
+                        print(
+                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                            "PRICE NOT FOUND",
+                        )
                         continue
                     try:
                         local = (
@@ -72,7 +83,10 @@ class Kijiji:
                             .lstrip()
                         )
                     except AttributeError:
-                        print(datetime.datetime.now(), "LOCAL NOT FOUND\n")
+                        print(
+                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                            "LOCAL NOT FOUND",
+                        )
                         continue
                     try:
                         img = (
@@ -88,10 +102,16 @@ class Kijiji:
                         writer = csv.writer(csvfile)
                         writer.writerow([pid, price.rstrip().lstrip(), self.time])
                         read_len_line(csvfile, self.base_url)
-                        print(datetime.datetime.now(), "<|DATA WRITTEN|>\n")
+                        print(
+                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                            "<|DATA WRITTEN|>",
+                        )
                     Kijiji.send_webhook(data)
                 else:
-                    print(datetime.datetime.now(), "<|PID ALREADY EXISTS|>\n")
+                    print(
+                        datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                        "<|PID ALREADY EXISTS|>",
+                    )
                     Kijiji.payload(self)
 
     def send_webhook(data):
@@ -107,7 +127,7 @@ class Kijiji:
         webhook.add_embed(embed)
         resp = webhook.execute()
         if resp.status_code == 200:
-            print(datetime.datetime.now(), "<|WEBHOOK SENT|>\n")
+            print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|WEBHOOK SENT|>")
         time.sleep(2)
         return resp
 
