@@ -6,7 +6,6 @@
 #include "sys/stat.h"
 #include "sys/wait.h"
 
-
 int call_python(char *argv[])
 {
     pid_t pid;
@@ -29,13 +28,12 @@ int call_python(char *argv[])
     }
     else
     {
-        waitpid (pid, &status, -1);
+        waitpid(pid, &status, -1);
         return 0;
     }
 
     return (0);
 }
-
 
 void do_python(void)
 {
@@ -44,10 +42,9 @@ void do_python(void)
     argv[0] = "python3";
     argv[1] = "kijiji.py";
     call_python(argv);
-    
+
     argv[1] = "utils.py";
     call_python(argv);
-
 }
 
 int main(void)

@@ -51,15 +51,13 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 `Oklouer`
 
-
 <img width="440" alt="Screenshot 2022-08-09 at 15 58 38" src="https://user-images.githubusercontent.com/89024276/183749691-f8f5b713-6cf8-4f03-bc7d-52753149fec8.png">
-
 
 ## ADD
 
 Improvement:
 
-1. Try to add AWAITING FUNCTION in url to avoid the infinite loop due python can do max 999 recall function
+1. Add error message after the program crash.
 2. Check even how to scrape BAckend website
 3. add proxies or change user agent if is not loops in KIJIJI
 4. Check to sned a message when the program stop to run

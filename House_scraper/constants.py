@@ -21,7 +21,6 @@ LOGISWEBHOOK = '1006657619622121554/xoqXJtCblWT1cCdjlYFu9rGHKMGVVnJwDw3v1p4F-r6a
 #----DISCORD----#
 PREFIX = 'https://discord.com/api/webhooks/'
 COLOR_DS = '127378'
-
 #----ERROR_HANDLING----#
 IMAGE_ERROR = "https://cdn.discordapp.com/attachments/1005141977488175154/1011050692804358214/1612056853933.jpeg"
 IMAGE_ERROR_2 = "https://www.codingem.com/wp-content/uploads/2021/08/try-catch.001-1024x576.jpeg"
