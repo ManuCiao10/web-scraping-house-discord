@@ -60,11 +60,9 @@ Improvement:
 1. Add error message after the program crash.
 2. Check even how to scrape BAckend website
 3. add proxies or change user agent if is not loops in KIJIJI
-4. Check to sned a message when the program stop to run
 5. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE CLASS AVAILABLE in the html
 6. Put each module singular and run them in a server
 7. Add SQL database
-8. Add color for Error output
 9. Django
 10. Add random User Agent
 11. add payment check discord

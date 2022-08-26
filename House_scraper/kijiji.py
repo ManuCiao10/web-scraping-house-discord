@@ -1,4 +1,3 @@
-from operator import delitem
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
