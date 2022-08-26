@@ -30,8 +30,7 @@ class LogiScraper:
         self.session = session
         self.request_count = 0
 
-    def set_user_agent(self):
-
+    def set_user_agent(self, user_agent):
         print("[Setting user_agent ...]", user_agent)
         self.session.headers["User-Agent"] = user_agent
 
