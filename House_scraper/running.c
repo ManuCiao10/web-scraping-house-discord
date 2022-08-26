@@ -15,15 +15,16 @@ int call_python(char *argv[])
     argv2[0] = "python3";
     argv2[1] = argv[1];
     pid = fork();
+    printf("Running python3 %s\n", argv2[1]);
     if (pid == 0)
     {
         execvp("python3", argv2);
-        printf("fuck thisé\n");
+        printf("Error\n");
         exit(0);
     }
     if (pid < 0)
     {
-        perror("fork");
+        perror("Fork");
         exit(1);
     }
     else
@@ -31,7 +32,6 @@ int call_python(char *argv[])
         waitpid(pid, &status, -1);
         return 0;
     }
-
     return (0);
 }
 
@@ -42,8 +42,7 @@ void do_python(void)
     argv[0] = "python3";
     argv[1] = "kijiji.py";
     call_python(argv);
-
-    argv[1] = "utils.py";
+    argv[1] = "message.py";
     call_python(argv);
 }
 

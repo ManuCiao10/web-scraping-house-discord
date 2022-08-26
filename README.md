@@ -58,16 +58,11 @@ Actually the script support only Discord. Will be implementate very soon a versi
 Improvement:
 
 1. Add error message after the program crash.
-2. Check even how to scrape BAckend website
-3. add proxies or change user agent if is not loops in KIJIJI
-5. add each function for each data [img, price ecc ] ONLY WHEN THE FUNCTION IS MORE COMPLEX WITH MORE CLASS AVAILABLE in the html
-6. Put each module singular and run them in a server
-7. Add SQL database
-9. Django
-10. Add random User Agent
-11. add payment check discord
-12. Implemantation with Fast API
-13. add User Interface users when he can type the price and the city
+2. Fix and test all the modules and run them in a server.
+3. Add random User Agent
+4. add payment check discord
+5. Implemantation with Fast API
+6. add User Interface users when he can type the price and the city
 
 ## LINK UTILS
 
