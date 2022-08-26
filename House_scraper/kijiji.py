@@ -8,6 +8,7 @@ import datetime
 import csv
 import logging
 from utils import *
+import psutil    
 
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(level=logging.DEBUG)
@@ -17,6 +18,7 @@ class Kijiji:
     """Class for creating Kijiji Iterators"""
 
     def __init__(self):
+        print(psutil.process_iter())
         self.base_url = KIJIJI
         self.session = requests.Session()
         self.pid_list = set()
@@ -36,7 +38,7 @@ class Kijiji:
             return Kijiji.awaiting(self)
         else:
             return Kijiji.scrape_data(self, loops)
-
+    
     def scrape_data(self, loops):
         while True:
             for loop in loops:
@@ -120,7 +122,6 @@ class Kijiji:
             print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|WEBHOOK SENT|>")
         time.sleep(2)
         return resp
-
 
 if __name__ == "__main__":
     Kijiji()
