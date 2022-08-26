@@ -1,3 +1,4 @@
+from random import random
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
@@ -7,7 +8,8 @@ import datetime
 import csv
 import logging
 from utils import *
-
+from random_user_agent.user_agent import UserAgent
+from random_user_agent.params import SoftwareName, OperatingSystem
 
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(level=logging.DEBUG)
@@ -21,12 +23,24 @@ class Kijiji:
         self.session = requests.Session()
         self.pid_list = set()
         self.time = datetime.datetime.now().strftime("%H:%M:%S.%f")
-        return self.payload()
+        return Kijiji.payload(self)
+
+    def set_random_user_agent(self):
+        software_names = [SoftwareName.CHROME.value]
+        operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]
+        user_agent_rotator = UserAgent(
+            software_names=software_names, operating_systems=operating_systems, limit=50
+        )
+        self.user_agent = user_agent_rotator.get_random_user_agent()
+        return self.user_agent
 
     def payload(self):
         print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|PAYLOAD|>")
+        headers = {"User-Agent": Kijiji.set_random_user_agent(self)}
+        print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|USER AGENT SET|>")
         page = self.session.get(
-            f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520"
+            f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520",
+            headers=headers,
         )
         if not page:
             return on_message(page.status_code, self.base_url)

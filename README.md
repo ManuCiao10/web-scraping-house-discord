@@ -59,10 +59,9 @@ Improvement:
 
 1. Add error message after the program crash.
 2. Fix and test all the modules and run them in a server.
-3. Add random User Agent
-4. add payment check discord
-5. Implemantation with Fast API
-6. add User Interface users when he can type the price and the city
+3. add payment check discord
+4. Implemantation with Fast API
+5. add User Interface users when he can type the price and the city
 
 ## LINK UTILS
 
