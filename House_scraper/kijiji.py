@@ -94,7 +94,7 @@ class Kijiji:
                     except AttributeError:
                         continue
                     if img == None:
-                        img = "https://logos-download.com/wp-content/uploads/2020/06/Kijiji_Logo-700x382.png"
+                        img = LOGO_IMG
                     data = [url, address, img, price, local]
                     self.pid_list.add(pid)
                     with open("data.csv", "a") as csvfile:
