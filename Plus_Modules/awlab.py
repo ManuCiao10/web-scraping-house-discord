@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
-from constants import *
+from House_scraper.constants import *
 import datetime
-from utils import *
+from House_scraper.utils import *
 from requests_html import HTMLSession
 
 
