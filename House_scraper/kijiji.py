@@ -1,4 +1,7 @@
 from random import random
+
+
+import random
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import time
@@ -22,8 +25,9 @@ class Kijiji:
         self.base_url = KIJIJI
         self.session = requests.Session()
         self.pid_list = set()
+        self.proxy = set()
         self.time = datetime.datetime.now().strftime("%H:%M:%S.%f")
-        return Kijiji.payload(self)
+        return Kijiji.proxies(self)
 
     def set_random_user_agent(self):
         software_names = [SoftwareName.CHROME.value]
@@ -33,6 +37,18 @@ class Kijiji:
         )
         self.user_agent = user_agent_rotator.get_random_user_agent()
         return self.user_agent
+
+    def proxies(self):
+        with open("proxies.txt", "r") as f:
+            file_lines1 = f.readlines()
+            for line1 in file_lines1:
+                self.proxy.add(line1.strip())
+        self.session.proxies = {
+            "http": "http://{}".format(random.choice(list(self.proxy))),
+            "https": "http://{}".format(random.choice(list(self.proxy))),
+        }
+        print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|PROXIES SET|>")
+        return Kijiji.payload(self)
 
     def payload(self):
         print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|PAYLOAD|>")
