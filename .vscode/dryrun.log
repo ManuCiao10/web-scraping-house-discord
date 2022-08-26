@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/admin/Desktop/web-scraping-house-discord'
+make: Leaving directory `/Users/admin/Desktop/web-scraping-house-discord'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
