@@ -33,17 +33,14 @@ class Kijiji:
         self.soup = BeautifulSoup(page.content, "lxml")
         loops = self.soup.find_all("div", class_="clearfix")
         if not loops:
-            print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|NO DATA FOUND|>")
-            # add proxies or change user agent
-            time.sleep(90)
-            return Kijiji.payload(self)
+            return Kijiji.awaiting(self)
         else:
             return Kijiji.scrape_data(self, loops)
 
     def scrape_data(self, loops):
         while True:
             for loop in loops:
-                try:  # ADD awaiting function
+                try:
                     url = loop.find("a", class_="title").get("href")
                     pid = url.split("/")[-1]
                 except AttributeError as err:
@@ -101,6 +98,11 @@ class Kijiji:
                         "<|PID ALREADY EXISTS|>",
                     )
                     Kijiji.payload(self)
+
+    def awaiting(self):
+        print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|AWAITING|>")
+        time.sleep(60)
+        return Kijiji.payload(self)
 
     def send_webhook(data):
         webhook = DiscordWebhook(url=f"{PREFIX}{KIJIJIWEBHOOK}")

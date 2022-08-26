@@ -27,6 +27,7 @@ pip3 install ScaperMonitor
 ## Features
 
 The script makes it easy for customers to find a cheap and fast home. Getting a message every time a house is posted.
+
 Actually the script support only Discord. Will be implementate very soon a version even for Whatsapp.
 
 #### Per House it scrapes the following information:
@@ -50,7 +51,9 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 `Oklouer`
 
+
 <img width="440" alt="Screenshot 2022-08-09 at 15 58 38" src="https://user-images.githubusercontent.com/89024276/183749691-f8f5b713-6cf8-4f03-bc7d-52753149fec8.png">
+
 
 ## ADD
 
@@ -75,6 +78,7 @@ Improvement:
 1. https://github.com/CRutkowski/Kijiji-Scraper/tree/master/kijiji_scraper
 2. https://github.com/niewiemczego/nike-stock-monitor/blob/main/nike_stock.py
 3. https://github.com/yasserqureshi1/Sneaker-Monitors
+4. https://www.youtube.com/watch?v=nmUSSlt4JKk&ab_channel=YasCode
 
 ## Deployment
 
