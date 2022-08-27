@@ -24,6 +24,10 @@ Also, you can install with PyPI.
 pip3 install ScaperMonitor
 ```
 
+## Discord
+
+https://user-images.githubusercontent.com/89024276/187013416-bd3c3430-c05a-4fc1-846a-280a9875e016.mp4
+
 ## Features
 
 The script makes it easy for customers to find a cheap and fast home. Getting a message every time a house is posted.
@@ -47,10 +51,6 @@ Actually the script support only Discord. Will be implementate very soon a versi
 - Kijiji
 - Oklouer
 - Logisquebec
-
-## Discord
-
-https://user-images.githubusercontent.com/89024276/187013416-bd3c3430-c05a-4fc1-846a-280a9875e016.mp4
 
 ## ADD
 
