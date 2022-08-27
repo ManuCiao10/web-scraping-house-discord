@@ -36,6 +36,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 - url
 - text
 - image
+
 - n.bedroom
 - n.people
 - price
@@ -49,9 +50,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 
 ## Discord
 
-`Oklouer`
-
-<img width="440" alt="Screenshot 2022-08-09 at 15 58 38" src="https://user-images.githubusercontent.com/89024276/183749691-f8f5b713-6cf8-4f03-bc7d-52753149fec8.png">
+https://user-images.githubusercontent.com/89024276/187013416-bd3c3430-c05a-4fc1-846a-280a9875e016.mp4
 
 ## ADD
 
