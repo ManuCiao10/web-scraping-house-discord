@@ -46,10 +46,7 @@ Actually the script support only Discord. Will be implementate very soon a versi
 Improvement:
 
 1. Add error message after the program crash.
-3. Fix and test all the modules and run them in a server.
-4. add payment discord
-5. Implemantation with Fast API
-6. add User Interface users when he can type the price and the city
+2. Fix and test all the modules and run them in a server.
 
 ## LINK UTILS
 
