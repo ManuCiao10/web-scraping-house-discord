@@ -46,10 +46,11 @@ Actually the script support only Discord. Will be implementate very soon a versi
 Improvement:
 
 1. Add error message after the program crash.
-2. Fix and test all the modules and run them in a server.
-3. add payment check discord
-4. Implemantation with Fast API
-5. add User Interface users when he can type the price and the city
+2. Add only first one address scraper
+3. Fix and test all the modules and run them in a server.
+4. add payment check discord
+5. Implemantation with Fast API
+6. add User Interface users when he can type the price and the city
 
 ## LINK UTILS
 

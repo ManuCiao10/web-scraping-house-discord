@@ -38,18 +38,25 @@ class Kijiji:
     def scrape_data(self, loops):
         while True:
             for loop in loops[1:]:
-                address = (
-                    loop.find("a", class_="title").text.rstrip().lstrip().capitalize()
-                )
-                print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|MONITORING|>")
+                try:
+                    address = (
+                        loop.find("a", class_="title")
+                        .text.rstrip()
+                        .lstrip()
+                        .capitalize()
+                    )
+
+                except AttributeError:
+                    print(
+                        datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                        "<|MONITORING HOUSES|>",
+                    )
+                    continue
                 if address not in self.address_list:
                     try:
                         url = loop.find("a", class_="title").get("href")
                     except AttributeError:
-                        print(
-                            datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                            "<|URL NOT FOUND|>",
-                        )
+                        continue
                     try:
                         price = loop.find("div", class_="price").text.split(",")[0]
                     except AttributeError:

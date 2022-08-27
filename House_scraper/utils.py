@@ -41,7 +41,7 @@ def remove_old_entries(csvfile):
 # delete all the data after reaching 500 lines
 # send a webhook message to discord
 def read_len_line(csvfile: TextIOWrapper, website: str):
-    with open("data.csv", "r") as f:
+    with open("data_kijiji.csv", "r") as f:
         lines = f.readlines()
         if len(lines) >= 500:
             csvfile.truncate(0)
