@@ -39,12 +39,9 @@ class Kijiji:
         while True:
             for loop in loops[1:]:
                 address = (
-                        loop.find("a", class_="title")
-                        .text.rstrip()
-                        .lstrip()
-                        .capitalize()
-                    )
-                print(address)
+                    loop.find("a", class_="title").text.rstrip().lstrip().capitalize()
+                )
+                print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|MONITORING|>")
                 if address not in self.address_list:
                     try:
                         url = loop.find("a", class_="title").get("href")
@@ -87,7 +84,7 @@ class Kijiji:
                     Kijiji.send_webhook(data)
             print(
                 datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                "<|PID ALREADY EXISTS|>",
+                "<|RUNNING ANOTHER REQUEST|>",
             )
             Kijiji.payload(self)
 
