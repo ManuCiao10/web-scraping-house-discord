@@ -2,6 +2,13 @@ from io import TextIOWrapper
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from constants import *
 import time
+import random
+from random_user_agent.user_agent import UserAgent
+from random_user_agent.params import SoftwareName, OperatingSystem
+import datetime
+import requests
+import time
+from bs4 import BeautifulSoup
 
 
 def on_message(status_code: int, website: str):
@@ -54,3 +61,26 @@ def lines_error(len: int, website: str):
     webhook.add_embed(embed)
     resp = webhook.execute()
     time.sleep(2)
+
+
+def proxies(self):
+    with open("proxies.txt", "r") as f:
+        file_lines1 = f.readlines()
+        for line1 in file_lines1:
+            self.proxy.add(line1.strip())
+    self.session.proxies = {
+        "http": "http://{}".format(random.choice(list(self.proxy))),
+        "https": "http://{}".format(random.choice(list(self.proxy))),
+    }
+    print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|PROXIES SET|>")
+
+
+def set_random_user_agent(self):
+    software_names = [SoftwareName.CHROME.value]
+    operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]
+    user_agent_rotator = UserAgent(
+        software_names=software_names, operating_systems=operating_systems, limit=50
+    )
+    self.user_agent = user_agent_rotator.get_random_user_agent()
+    print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|USER AGENT SET|>")
+    return self.user_agent
