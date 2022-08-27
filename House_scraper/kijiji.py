@@ -82,15 +82,18 @@ class Kijiji:
                             "<|DATA WRITTEN|>",
                         )
                     Kijiji.send_webhook(data)
-            print(
-                datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                "<|RUNNING ANOTHER REQUEST|>",
-            )
-            Kijiji.payload(self)
+            Kijiji.another_request(self)
 
     def awaiting(self):
         print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|AWAITING|>")
         time.sleep(60)
+        Kijiji.payload(self)
+
+    def another_request(self):
+        print(
+            datetime.datetime.now().strftime("%H:%M:%S.%f"),
+            "<|RUNNING ANOTHER REQUEST|>",
+        )
         Kijiji.payload(self)
 
     def send_webhook(data):
