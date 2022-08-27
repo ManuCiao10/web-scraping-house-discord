@@ -76,11 +76,7 @@ class Kijiji:
                     with open("data.csv", "a") as csvfile:
                         writer = csv.writer(csvfile)
                         writer.writerow(
-                            [
-                                datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                                address,
-                                price.rstrip().lstrip(),
-                            ]
+                            [datetime.datetime.now().strftime("%H:%M:%S.%f"), address]
                         )
                         read_len_line(csvfile, self.base_url)
                         print(
