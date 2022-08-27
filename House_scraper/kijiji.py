@@ -73,7 +73,7 @@ class Kijiji:
                         img = LOGO_IMG
                     data = [url, address, img, price, local]
                     self.address_list.add(address)
-                    with open("data.csv", "a") as csvfile:
+                    with open("data_kijiji.csv", "a") as csvfile:
                         writer = csv.writer(csvfile)
                         writer.writerow(
                             [datetime.datetime.now().strftime("%H:%M:%S.%f"), address]
