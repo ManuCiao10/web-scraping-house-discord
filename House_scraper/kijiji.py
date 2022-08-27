@@ -45,12 +45,7 @@ class Kijiji:
                         .lstrip()
                         .capitalize()
                     )
-
                 except AttributeError:
-                    print(
-                        datetime.datetime.now().strftime("%H:%M:%S.%f"),
-                        "<|MONITORING HOUSES|>",
-                    )
                     continue
                 if address not in self.address_list:
                     try:
