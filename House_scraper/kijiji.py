@@ -18,16 +18,15 @@ class Kijiji:
         self.time = datetime.datetime.now().strftime("%H:%M:%S.%f")
         Kijiji.scrape_data(self)
 
-    # def payload(self):
-        
-        # else:
-        #     Kijiji.scrape_data(self, loops)
-
     def scrape_data(self):
         while True:
             print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|PAYLOAD|>")
             headers = {"User-Agent": set_random_user_agent(self)}
             proxies(self)
+            print(
+                datetime.datetime.now().strftime("%H:%M:%S.%f"),
+                "<|RUNNING REQUEST|>",
+            )
             page = self.session.get(
                 f"{self.base_url}/c30349001l1700124?ll=46.813082%2C-71.207460&address=Qu%C3%A9bec%2C+QC&radius=8.0&price=__520",
                 headers=headers,
@@ -36,9 +35,9 @@ class Kijiji:
                 on_message(page.status_code, self.base_url)
             self.soup = BeautifulSoup(page.content, "lxml")
             loops = self.soup.find_all("div", class_="clearfix")
-            if not loops:
+            if loops:
                 Kijiji.awaiting(self)
-        
+
             for loop in loops[1:]:
                 try:
                     address = (
@@ -88,19 +87,10 @@ class Kijiji:
                             "<|DATA WRITTEN|>",
                         )
                     Kijiji.send_webhook(data)
-                #Kijiji.another_request(self)
 
     def awaiting(self):
         print(datetime.datetime.now().strftime("%H:%M:%S.%f"), "<|AWAITING|>")
         time.sleep(60)
-        Kijiji.payload(self)
-
-    def another_request(self):
-        print(
-            datetime.datetime.now().strftime("%H:%M:%S.%f"),
-            "<|RUNNING ANOTHER REQUEST|>",
-        )
-        Kijiji.payload(self)
 
     def send_webhook(data):
         webhook = DiscordWebhook(url=f"{PREFIX}{KIJIJIWEBHOOK}")
