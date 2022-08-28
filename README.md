@@ -47,7 +47,6 @@ Improvement:
 
 1. Add error message after the program crash.
 2. Add new city supported.
-3. add roles discord.
 4. Fix and test all the modules and run them in a server.
 
 ## LINK UTILS
