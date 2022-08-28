@@ -35,7 +35,7 @@ class Kijiji:
                 on_message(page.status_code, self.base_url)
             self.soup = BeautifulSoup(page.content, "lxml")
             loops = self.soup.find_all("div", class_="clearfix")
-            if loops:
+            if not loops:
                 Kijiji.awaiting(self)
 
             for loop in loops[1:]:
